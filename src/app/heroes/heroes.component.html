@@ -1,1 +1,26 @@
-<p>heroes works!</p>
+<h2>My Heroes</h2>
+
+<ul>
+  <! o ngFor está multiplicando os itens de HEROES - pega cada hero de heroes e exibe na tela>
+  <! o parametro click irá gerar o onSelect para cada hero da lista>
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" >
+    <span>{{ hero.id }}</span> {{ hero.name }}
+  </li>
+</ul>
+
+<! outra div foi inserida para usar uma diretiva nativa do angular (ngIf)>
+<div *ngIf="selectedHero">
+  <h2>{{ selectedHero.name | uppercase }} Details</h2>
+<! div: container genérico para conteúdo de fluxo>
+<div><span>id: </span> {{ selectedHero.id }}</div> <! span: container genérico em linha para conteúdo fraseado>
+<div><span>name: </span> {{ selectedHero.name }}</div>
+
+<! edição do herói>
+
+<div>
+  <label for="name">Hero name:</label>
+  <! two-way binding: fornece aos componentes do aplicativo uma maneira de compartilhar dados - ouve eventos e atualiza valores>
+  <! para usar o ngModel é necessário importar o FormsModel no app.module>
+  <input id="name" [(ngModel)] ="hero.name" placeholder="name" type="text"/>
+</div>
+</div>
