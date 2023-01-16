@@ -1,27 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HeroService } from '../hero.service';
 import { Hero } from '../heroes.model';
 import { HEROES } from '../mock-heroes';
 
-@Component({ //decorator
+@Component({
+  //decorator
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
+  styleUrls: ['./heroes.component.scss'],
 })
 
 //faz parte do ciclo de vida do component
-export class HeroesComponent{
-  hero: Hero = {
-    id: 1,
-    name: 'Wolverine'
-  };
+export class HeroesComponent implements OnInit{
+  heroes: Hero[] = [];
+  selectedHero?: Hero;
 
-//pode ser usado para injeção de dependencias
+constructor(private heroService: HeroService) {}
 
-heroes = HEROES;
-selectedHero?: Hero;
+ngOnInit(): void {
+  this.getHeroes();
+}
 
-onSelect(hero: Hero): void{
-  //this = contexto da classe
-  this.selectedHero = hero;
+getHeroes(): void{
+  this.heroes = this.heroService.getHeroes();
+}
+
+  onSelect(hero: Hero): void {
+    //this = contexto da classe
+    this.selectedHero = hero;
   }
 }
