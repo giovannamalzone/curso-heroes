@@ -10,21 +10,4 @@
   </li>
 </ul>
 
-<! outra div foi inserida para usar uma diretiva nativa do angular (ngIf)>
-<! usou-se o ngIf pq inicialmente o selectedHero retorna de forma indefinida, isto é false.
-O ngIf irá coagir o valor para o sentido contrário (true)>
-<div *ngIf="selectedHero">
-  <h2>{{ selectedHero.name | uppercase }} Details</h2>
-<! div: container genérico para conteúdo de fluxo>
-<div><span>id: </span> {{ selectedHero.id }}</div> <! span: container genérico em linha para conteúdo fraseado>
-<div><span>name: </span> {{ selectedHero.name }}</div>
-
-<! edição do herói>
-<div>
-  <label for="name">Hero name:</label>
-  <! two-way binding: fornece aos componentes do aplicativo uma maneira de compartilhar dados - ouve eventos e atualiza valores ao mesmo tempo entre componentes pai e filho>
-  <! para usar o ngModel é necessário importar o FormsModel no app.module>
-  <input id="name" [(ngModel)] ="selectedHero.name" placeholder="name" type="text"/>
-</div>
-
-</div>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>

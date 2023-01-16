@@ -1,0 +1,15 @@
+<div *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+<! div: container genérico para conteúdo de fluxo>
+<div><span>id: </span> {{ hero.id }}</div> <! span: container genérico em linha para conteúdo fraseado>
+<div><span>name: </span> {{ hero.name }}</div>
+
+<! edição do herói>
+<div>
+  <label for="name">Hero name:</label>
+  <! two-way binding: fornece aos componentes do aplicativo uma maneira de compartilhar dados - ouve eventos e atualiza valores ao mesmo tempo entre componentes pai e filho>
+  <! para usar o ngModel é necessário importar o FormsModel no app.module>
+  <input id="name" [(ngModel)] ="hero.name" placeholder="name" type="text"/>
+</div>
+
+</div>
